@@ -1,13 +1,19 @@
 import hashlib
 import getpass
 from zxcvbn import zxcvbn #for checking password strength
+from nmap import nmap 
 
+
+
+#_____________ACCOUNT___________________
 account = {} #users account
 time_to_break:int #time it took to break the password.
 def create_account()->dict:
     # Get the username and password
 
     username = input("Enter your username: ")
+    while len(username)<=2:
+        username = input("Re-enter your username: ")
     password = create_password()
     if(strong_password(password)):
         print("Strong password")
@@ -25,6 +31,8 @@ def create_account()->dict:
 def create_password()->str:
 
     Password = getpass.getpass("Please enter your password: ")
+    while len(Password)<=2:
+        Password = getpass.getpass("Please re-enter your password: ")        
     return Password
  
 
@@ -34,7 +42,7 @@ def login()->bool:
     hashed_password = hashlib.sha256(Password.encode()).hexdigest() #encrypt and hash the passwor to 256 bits
     for user in account: #iterate from all possible accounts
         print(user)
-        if account.keys() == username and account[username] == hashed_password: #We have found a user in our account log
+        if username == username and account[username] == hashed_password: #We have found a user in our account log
             return True
     return False
 
@@ -48,6 +56,12 @@ def strong_password(password:str )->bool:
         print("Sufficient password")
         return True
     return False
+
+
+#__________________CHECK PORT__________________
+
+
+
 
 
 def main():
