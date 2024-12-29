@@ -16,3 +16,5 @@ for host in nm.all_hosts():
     print("Host: %s (%s)" % (host, nm[host].hostname()))
     for protocol in nm[host].all_protocols():
         print("Protocol: %s (%s)" % protocol) 
+        #info = host 
+        #for port,state 

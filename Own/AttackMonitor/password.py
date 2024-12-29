@@ -58,10 +58,10 @@ def strong_password(password:str )->bool:
     return False
 
 
+
+
+
 #__________________CHECK PORT__________________
-
-
-
 
 
 def main():
